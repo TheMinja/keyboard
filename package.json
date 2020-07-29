@@ -6,7 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheMinja/keyboard.git"
+  },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheMinja/keyboard/issues"
+  },
+  "homepage": "https://github.com/TheMinja/keyboard#readme",
+  "dependencies": {
+    "child_processes": "^0.1.0",
+    "express": "^4.17.1"
+  }
 }
