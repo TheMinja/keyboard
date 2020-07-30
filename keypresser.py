@@ -1,8 +1,11 @@
 import sys
+from pynput.keyboard import Key, Controller
+
+keyboard = Controller()
 
 char = sys.argv[1]
+convertedChar = chr(int(char))
 
-f = open("tempOutput.txt", "a")
-f.write("character is: " + chr(int(char)))
-f.close()
+keyboard.press(convertedChar)
+keyboard.release(convertedChar)
 
