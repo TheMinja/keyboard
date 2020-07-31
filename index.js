@@ -18,7 +18,7 @@ app.post('/send/:character', (req, res) => {
                 process.exit(1);
             }
             else{
-                process.stdout.write('"python script exist with code: ' + code + '\n');
+                process.stdout.write('python script exist with code: ' + code + '\n');
             }
         });
     res.sendStatus(200);
