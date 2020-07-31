@@ -3,9 +3,16 @@ from pynput.keyboard import Key, Controller
 
 keyboard = Controller()
 
-# char = sys.argv[1]
-char = 97
-convertedChar = chr(int(char))
+data = int(sys.argv[1])
 
-keyboard.press(convertedChar)
-keyboard.release(convertedChar)
+if data == 8:
+    keyboard.press(Key.backspace)
+    keyboard.release(Key.backspace)
+elif data == 32:
+    keyboard.press(Key.space)
+    keyboard.release(Key.space)
+else:
+    convertedChar = chr(data)
+
+    keyboard.press(convertedChar)
+    keyboard.release(convertedChar)
