@@ -2,25 +2,38 @@ import requests
 from pynput import keyboard
 
 
+def send(url):
+    try:
+        x = requests.post(url)
+        print('Server: ' + x.text)
+    except requests.exceptions.RequestException as e:
+        print('connection failed')
+
+
 def on_press(key):
     try:
         print('alphanumeric key {0} pressed'.format(
             key.char))
 
         char = key.char
-        url = 'http://localhost:3000/send/' + str(ord(char))
-
+        url = 'http://192.168.0.90:3000/send/' + str(ord(char))
         print('trying to send to ' + url)
-
-        try:
-            x = requests.post(url)
-            print('Server: ' + x.text)
-        except requests.exceptions.RequestException as e:
-            print('connection failed')
+        send(url)
 
     except AttributeError:
         print('special key {0} pressed'.format(
             key))
+
+        url = ''
+
+        if str(key) == 'Key.space':
+            url = 'http://192.168.0.90:3000/send/32'
+        elif str(key) == 'Key.backspace':
+            url = 'http://192.168.0.90:3000/send/8'
+
+        print('trying to send to ' + url)
+        send(url)
+
 
 
 def on_release(key):
