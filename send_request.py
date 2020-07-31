@@ -1,6 +1,8 @@
 import requests
 from pynput import keyboard
 
+shiftPressed = False
+
 
 def send(url):
     try:
@@ -30,6 +32,8 @@ def on_press(key):
             url = 'http://192.168.0.90:3000/send/32'
         elif str(key) == 'Key.backspace':
             url = 'http://192.168.0.90:3000/send/8'
+        elif str(key) == 'Key.shift' or str(key) == 'Key.shift_r':
+            url = 'http://192.168.0.90:3000/send/1'
 
         print('trying to send to ' + url)
         send(url)
