@@ -8,13 +8,13 @@ def on_press(key):
             key.char))
 
         char = key.char
-        url = 'http://192.168.0.90:3000/send/' + str(ord(char))
+        url = 'http://localhost:3000/send/' + str(ord(char))
 
         print('trying to send to ' + url)
 
         try:
             x = requests.post(url)
-            print(x.text)
+            print('Server: ' + x.text)
         except requests.exceptions.RequestException as e:
             print('connection failed')
 

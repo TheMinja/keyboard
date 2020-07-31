@@ -7,9 +7,20 @@ app.get('/', (req, res) => {
 });
 
 app.post('/send/:character', (req, res) => {
-    spawn('python', ['keypresser.py', req.params.character]);
+     const childProcess = spawn('python', ['keypresser.py', req.params.character]);
 
-    console.log('logging ' + req.params.character)
+     childProcess.on('data', function(data){
+        process.stdout.write("python script output",data);
+    });
+    childProcess.on('close', function(code) {
+            if ( code === 1 ){
+                process.stderr.write("error occured",code);
+                process.exit(1);
+            }
+            else{
+                process.stdout.write('"python script exist with code: ' + code + '\n');
+            }
+        });
     res.sendStatus(200);
 });
 
